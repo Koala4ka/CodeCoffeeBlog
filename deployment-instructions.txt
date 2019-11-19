@@ -1,0 +1,67 @@
+# ------------
+# Install software
+# ------------
+
+# -- pip, update pip, virtual env, flask
+
+# ------------
+# git repo
+# ------------
+
+# -- install git 
+
+mkdir coffeeproject
+mkdir coffeproject-git-repo; cd coffeproject-git-repo 
+git init --bare
+
+cat << 'EOF' > hooks/post-receive
+#!/bin/bash
+
+SUPERVISOR_PROGRAM="coffeeproject"
+TARGET_SOURCE_DIR="/root/coffeeproject"
+
+unset GIT_INDEX_FILE
+echo "Stopping supervisor $SUPERVISOR_PROGRAM instance"
+supervisorctl stop $SUPERVISOR_PROGRAM
+echo "Copying new sources"
+git --work-tree=$TARGET_SOURCE_DIR --git-dir=./ checkout -f
+# echo "Starting supervisor $SUPERVISOR_PROGRAM instance"
+supervisorctl start $SUPERVISOR_PROGRAM
+EOF
+
+chmod +x hooks/post-receive
+
+# ------------
+# supervisor
+# ------------
+
+# -- install supervisor 
+
+cat << 'EOF' > /etc/supervisord.d/coffeeproject.ini
+[program:coffeeproject]
+directory=/root/coffeeproject
+command=/root/venv/bin/gunicorn -b 0.0.0.0:80 --chdir /root/coffeeproject main:app
+autostart=true
+autorestart=true
+stderr_logfile=/var/log/coffeeproject/coffeeproject.err.log
+stdout_logfile=/var/log/coffeeproject/coffeeproject.out.log
+EOF
+
+mkdir /var/log/coffeeproject
+supervisorctl reload
+
+# ------------
+# firewall
+# ------------
+
+firewall-cmd --permanent --add-port=80/tcp
+firewall-cmd --reload
+
+# ------------
+# mysql
+# ------------
+
+yum install mysql
+service mysqld start
+# -- create table in mysql
+mysql_secure_installation
