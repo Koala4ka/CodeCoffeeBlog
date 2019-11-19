@@ -1,2 +1,6 @@
 class Configuration(object):
-    DEBUG=False
+    DEBUG=True
+    DB_HOST="localhost"
+    DB_USER='root'
+    DB_PASSWORD=''
+    DB_DATABASE='coffeeproject'
