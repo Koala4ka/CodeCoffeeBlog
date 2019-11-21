@@ -9,6 +9,7 @@ def index():
 
 @app.route('/hello')
 def hello():
+    if db.open is False: db.ping(reconnect=True)
     cur = db.cursor()
     cur.execute("SELECT VERSION()")
     cur.close()
