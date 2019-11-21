@@ -11,4 +11,5 @@ def index():
 def hello():
     cur = db.cursor()
     cur.execute("SELECT VERSION()")
+    cur.close()
     return render_template('hello.html', mysql_version=cur.fetchone()[0])
