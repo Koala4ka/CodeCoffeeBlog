@@ -27,10 +27,18 @@ supervisorctl stop $SUPERVISOR_PROGRAM
 
 echo "Copying new sources"
 git --work-tree=$TARGET_SOURCE_DIR --git-dir=./ checkout -f
+cd $TARGET_SOURCE_DIR
 
 echo "Updating pip packages"
 source /root/venv/bin/activate
-pip install -r "$TARGET_SOURCE_DIR/requirements.txt"
+pip install -r requirements.txt
+
+echo "Upgrading DB"
+flask db init
+flask db upgrade
+
+echo "Seeding DB"
+flask seed_db
 
 echo "Starting supervisor $SUPERVISOR_PROGRAM instance"
 supervisorctl start $SUPERVISOR_PROGRAM
