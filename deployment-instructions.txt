@@ -2,9 +2,7 @@
 # Install software
 # ------------
 
-# -- pip, update pip, virtual env, flask
-pip install flask-sqlalchemy
-pip install mysqlclient
+# -- pip, update pip, virtual env
 
 # ------------
 # git repo
@@ -23,11 +21,18 @@ SUPERVISOR_PROGRAM="coffeeproject"
 TARGET_SOURCE_DIR="/root/coffeeproject"
 
 unset GIT_INDEX_FILE
+
 echo "Stopping supervisor $SUPERVISOR_PROGRAM instance"
 supervisorctl stop $SUPERVISOR_PROGRAM
+
 echo "Copying new sources"
 git --work-tree=$TARGET_SOURCE_DIR --git-dir=./ checkout -f
-# echo "Starting supervisor $SUPERVISOR_PROGRAM instance"
+
+echo "Updating pip packages"
+source /root/venv/bin/activate
+pip install -r "$TARGET_SOURCE_DIR/requirements.txt"
+
+echo "Starting supervisor $SUPERVISOR_PROGRAM instance"
 supervisorctl start $SUPERVISOR_PROGRAM
 EOF
 
@@ -63,7 +68,7 @@ firewall-cmd --reload
 # mysql
 # ------------
 
-yum install mysql
+yum install mysql mysql-devel python3-devel redhat-rpm-config
 service mysqld start
 # -- create table in mysql
 mysql_secure_installation
