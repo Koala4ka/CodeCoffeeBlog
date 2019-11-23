@@ -3,6 +3,8 @@
 # ------------
 
 # -- pip, update pip, virtual env, flask
+pip install flask-sqlalchemy
+pip install mysqlclient
 
 # ------------
 # git repo

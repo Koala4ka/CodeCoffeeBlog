@@ -1,13 +1,14 @@
 from flask import Flask
+from flask_sqlalchemy import SQLAlchemy
 from config import Configuration
-import pymysql
+from flask_migrate import Migrate
+
 
 app = Flask(__name__)
 app.config.from_object(Configuration)
-db = pymysql.connect(host=app.config["DB_HOST"], 
-					user=app.config["DB_USER"], 
-					password=app.config["DB_PASSWORD"], 
-					database=app.config["DB_DATABASE"])
+db = SQLAlchemy(app)
+migrate = Migrate(app, db)
 
 if __name__ == '__main__':
     app.run()
+
