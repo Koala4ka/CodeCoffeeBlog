@@ -11,12 +11,7 @@ migrate = Migrate(app, db)
 
 
 from models import User
-
 bcrypt = Bcrypt(app)
-
-
-import seed
-seed.seed()
 
 if __name__ == '__main__':
     app.run()
