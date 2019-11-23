@@ -19,8 +19,8 @@ bcrypt = Bcrypt(app)
 import click
 import seed
 
-@app.cli.command("seed")
-def seed():
+@app.cli.command("seed_db")
+def seed_db():
     seed.seed()
     
 # ----
