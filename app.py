@@ -9,10 +9,21 @@ app.config.from_object(Configuration)
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
+# ----
 
 from models import User
 bcrypt = Bcrypt(app)
 
+# ----
+
+import click
+import seed
+
+@app.cli.command("seed")
+def seed():
+    seed.seed()
+    
+# ----
+
 if __name__ == '__main__':
     app.run()
-
