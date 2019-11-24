@@ -24,6 +24,7 @@ import seed
 def seed_db():
     seed.seed_users()
     seed.seed_topics()
+    seed.seed_messages()
 
 # ----
 

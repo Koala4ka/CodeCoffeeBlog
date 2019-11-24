@@ -1,3 +1,4 @@
+from random import random, randrange, randint, choice
 from models import User, Topic, Message
 from app import db
 from app import bcrypt
@@ -53,3 +54,33 @@ def seed_topics():
     db.session.add(topic4)
 
     db.session.commit()
+
+
+def seed_messages_for_topic(top):
+    mock_messages = [
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis nisl vel nisi pharetra fermentum eu et erat. Pellentesque at ligula maximus, ultricies ipsum a, faucibus risus. Nam tincidunt, metus vitae egestas gravida, dui tellus posuere quam, ac sagittis ante risus ut nibh. Nam tempus odio sit amet hendrerit elementum.',
+        'Integer congue arcu nec tortor tincidunt, vitae rutrum ex mattis. Mauris purus metus, venenatis condimentum viverra non, imperdiet vitae urna.',
+        'Aliquam varius pellentesque faucibus. Maecenas malesuada quis sapien quis luctus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Praesent feugiat, odio sed ultricies commodo, justo arcu convallis felis, at convallis risus sem ac est.']
+    users = User.query.all()
+    for i in range(randint(2, 5)):
+        message_date = top.created_on + timedelta(hours=i, minutes=i, seconds=i)
+        message = Message(text=choice(mock_messages), author_id=choice(users).id, topic_id=top.id,
+                          created_on=message_date,
+                          updated_on=message_date)
+        db.session.add(message)
+
+
+def seed_messages():
+    messages_count = Message.query.count()
+    print(f'Messages count: {messages_count}')
+
+    if messages_count != 0:
+        return None
+
+    topics = Topic.query.all()
+    for topic in topics:
+        seed_messages_for_topic(topic)
+    db.session.commit()
+
+
+

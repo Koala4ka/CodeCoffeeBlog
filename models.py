@@ -16,7 +16,7 @@ class Topic(db.Model):
     name = db.Column(db.String(64), index=True)
     author_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     author = db.relationship("User")
-    messages = db.relationship('Message', backref='message_id', lazy=True, order_by="Message.created_on")
+    messages = db.relationship('Message', backref='message_id', lazy=True, order_by="desc(Message.created_on)")
     created_on = db.Column(db.DateTime, server_default=db.func.now())
     updated_on = db.Column(db.DateTime, server_default=db.func.now(), server_onupdate=db.func.now())
 
@@ -27,6 +27,7 @@ class Topic(db.Model):
 class Message(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     text = db.Column(db.Text())
+    author = db.relationship("User")
     author_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     topic_id = db.Column(db.Integer, db.ForeignKey('topic.id'), nullable=False)
     created_on = db.Column(db.DateTime, server_default=db.func.now())
