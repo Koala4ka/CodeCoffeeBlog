@@ -19,10 +19,12 @@ bcrypt = Bcrypt(app)
 import click
 import seed
 
+
 @app.cli.command("seed_db")
 def seed_db():
-    seed.seed()
-    
+    seed.seed_users()
+    seed.seed_topics()
+
 # ----
 
 if __name__ == '__main__':
