@@ -19,5 +19,5 @@ def hello():
 @app.route('/topics')
 def topics():
     topics = Topic.query.all()
-    topics_titles = '\n'.join([t.name for t in topics])
-    return topics_titles
+    topics_titles = ["{}: {}".format(t.author.username, t.name) for t in topics]
+    return '<br>'.join(topics_titles)
