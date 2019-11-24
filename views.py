@@ -20,12 +20,12 @@ def hello():
 @app.route('/topics')
 def topics():
     topics = Topic.query.order_by(desc(Topic.created_on)).all()
-    topics_titles = ["{} {}: {}".format(t.created_on, t.author.username, t.name) for t in topics]
+    topics_titles = ["<a href='/topic/{}'>{} {}: {}</a>".format(t.id, t.created_on, t.author.username, t.name) for t in topics]
     return '<br>'.join(topics_titles)
 
 
 @app.route('/topic/<int:id>')
 def topic(id):
     topic = Topic.query.get(id)
-    topic_messages = ["{}: {} date of creation {}".format(m.author.username, m.text, m.created_on) for m in topic.messages]
+    topic_messages = ["{} {}: {}".format(m.created_on, m.author.username, m.text) for m in topic.messages]
     return '<br>'.join(topic_messages)
