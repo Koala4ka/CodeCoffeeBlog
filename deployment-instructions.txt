@@ -34,7 +34,6 @@ source /root/venv/bin/activate
 pip install -r requirements.txt
 
 echo "Upgrading DB"
-flask db init
 flask db upgrade
 
 echo "Seeding DB"
