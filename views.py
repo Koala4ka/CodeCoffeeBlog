@@ -24,11 +24,9 @@ def topics():
     return render_template('topics.html', topics=topics)
 
 
-@app.route('/topic/<int:id>')
-def topic(id):
-    topic = Topic.query.get(id)
-    topic_messages = ["{} {}: {}".format(m.created_on, m.author.username, m.text) for m in topic.messages]
-    return '<br>'.join(topic_messages)
+@app.route('/topic/<int:topic_id>')
+def topic(topic_id):
+    return render_template('messages.html', topic=Topic.query.get(topic_id))
 
 
 @app.route('/login', methods=['GET', 'POST'])

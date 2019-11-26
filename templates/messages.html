@@ -1,0 +1,7 @@
+<h1>{{ topic.name }}</h1>
+
+{% for m in topic.messages %}
+<br>
+<br>{{ m.created_on }}
+<br><b>{{ m.author.username }}</b>: {{ m.text }}
+{% endfor %}
