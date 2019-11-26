@@ -12,8 +12,4 @@
 {% else %}
 Юзер: гость
 <br><a href="{{ url_for('login') }}">Войти</a>
-<br>
-<br><a href="{{ url_for('test_login', username='obama') }}">Войти как Обама</a>
-<br><a href="{{ url_for('test_login', username='merkel') }}">Войти как Меркель</a>
-<br><a href="{{ url_for('test_login', username='elizaveta_ii') }}">Войти как Елизавета ||</a>
 {%- endif %}
