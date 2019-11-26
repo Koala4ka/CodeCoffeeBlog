@@ -22,7 +22,10 @@ class User(UserMixin, db.Model):
 
 @login.user_loader
 def load_user(used_id):
-    return User.query.get(int(used_id))
+    try:
+        return User.query.get(int(used_id))
+    except:
+        return None
 
 
 class Topic(db.Model):
