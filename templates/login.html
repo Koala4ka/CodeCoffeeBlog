@@ -21,7 +21,7 @@
     {%- endif %}
     <p>{{ form.submit() }}</p>
 </form>
-<p><a href="{{ url_for('signup') }}">Регистрация</a></p>
+<p>Нет аккаунта? <a href="{{ url_for('signup') }}">Регистрация</a></p>
 
 <br><a href="{{ url_for('facility_login', username='obama') }}">Войти как Обама</a>
 <br><a href="{{ url_for('facility_login', username='merkel') }}">Войти как Меркель</a>
