@@ -8,7 +8,6 @@ class LoginForm(FlaskForm):
     username = StringField('Юзернейм', validators=[DataRequired()])
     password = PasswordField('Пароль', validators=[DataRequired()])
     submit = SubmitField('Войти (в IT)')
-    error = ''  # todo: fix; i'm not sure what's the proper way to pass error like incorrect password hence doing it like so for now
 
 
 class SignupForm(FlaskForm):

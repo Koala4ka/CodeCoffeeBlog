@@ -1,9 +1,9 @@
 from app import app, db
-from flask import render_template, redirect, url_for, flash
+from flask import render_template, redirect, url_for
 from models import Topic, User
 from sqlalchemy import desc
 from forms import LoginForm, SignupForm
-from flask_login import login_user, current_user, login_required, logout_user
+from flask_login import login_user, current_user, logout_user
 
 
 @app.route('/rebuildall')
@@ -37,10 +37,11 @@ def login():
 
     form = LoginForm()
     if form.validate_on_submit():
-        if not login_user_with_credentials(form.username.data, form.password.data):
-            form.error = 'Invalid username or password'
-            return render_template('login.html', title='Sign In', form=form)
-        return redirect(url_for('topics'))
+        if User.login_user_with_credentials(form.username.data, form.password.data):
+            return redirect(url_for('topics'))
+        else:
+            form.password.errors.append('Неправильный логин или пароль')
+            return redirect(url_for('login'), form=form)
 
     return render_template('login.html', title='Sign In', form=form)
 
@@ -65,15 +66,7 @@ def logout():
     return redirect(url_for('topics'))
 
 
-def login_user_with_credentials(username, password):
-    user = User.query.filter_by(username=username).first()
-    if user is None or not user.check_password(password):
-        return False
-    login_user(user, remember=True)
-    return True
-
-
 @app.route('/facility_login/<string:username>')
 def facility_login(username):
-    login_user_with_credentials(username, '123')
+    User.login_user_with_credentials(username, '123')
     return redirect(url_for('topics'))

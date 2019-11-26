@@ -1,6 +1,7 @@
 from app import db, login
 from flask_login import UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
+from flask_login import login_user
 
 
 class User(UserMixin, db.Model):
@@ -18,6 +19,14 @@ class User(UserMixin, db.Model):
 
     def __repr__(self):
         return '<User {}>'.format(self.username)
+
+    @staticmethod
+    def login_user_with_credentials(username, password):
+        user = User.query.filter_by(username=username).first()
+        if user is None or not user.check_password(password):
+            return False
+        login_user(user, remember=True)
+        return True
 
 
 @login.user_loader
@@ -52,3 +61,4 @@ class Message(db.Model):
 
     def __repr__(self):
         return '<Message {}>'.format(self.text)
+
