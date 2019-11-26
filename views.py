@@ -63,7 +63,7 @@ def login_user_with_credentials(username, password):
     return True
 
 
-@app.route('/test_login/<string:username>')
-def test_login(username):
+@app.route('/facility_login/<string:username>')
+def facility_login(username):
     login_user_with_credentials(username, '123')
     return redirect(url_for('topics'))
