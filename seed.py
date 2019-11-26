@@ -1,7 +1,6 @@
 from random import randint, choice
 from models import User, Topic, Message
 from app import db
-from app import bcrypt
 from datetime import datetime, timedelta
 
 

@@ -1,5 +1,6 @@
-from app import db, login, bcrypt
+from app import db, login
 from flask_login import UserMixin
+from werkzeug.security import generate_password_hash, check_password_hash
 
 
 class User(UserMixin, db.Model):
@@ -10,20 +11,18 @@ class User(UserMixin, db.Model):
 
     def __init__(self, username, password):
         self.username = username
-        self.password_hash = bcrypt.generate_password_hash('123').decode('utf-8')
+        self.password_hash = generate_password_hash('123')
 
     def check_password(self, password):
-        print(self.password_hash)
-        print(type(self.password_hash))
-        return bcrypt.check_password_hash(self.password_hash, password)
+        return check_password_hash(self.password_hash, password)
 
     def __repr__(self):
         return '<User {}>'.format(self.username)
 
 
 @login.user_loader
-def load_user(id):
-    return User.query.get(int(id))
+def load_user(used_id):
+    return User.query.get(int(used_id))
 
 
 class Topic(db.Model):
