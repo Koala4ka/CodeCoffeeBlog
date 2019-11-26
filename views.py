@@ -6,9 +6,9 @@ from forms import LoginForm
 from flask_login import login_user, current_user, login_required, logout_user
 
 
-@app.route('/')
+@app.route('/rebuildall')
 def index():
-    return render_template('index.html')
+    return render_template('rebuildall.html')
 
 
 @app.route('/hello')
@@ -18,6 +18,7 @@ def hello():
     return render_template('hello.html', mysql_version=version)
 
 
+@app.route('/')
 @app.route('/topics')
 def topics():
     topics = Topic.query.order_by(desc(Topic.created_on)).all()
