@@ -1,5 +1,9 @@
 {% for t in topics %}
-<a href='/topic/{{t.id}}'>{{ t.created_on }} {{ t.author.username }}: {{ t.name }}</a>
+<a href='/topic/{{t.id}}'>
+    {{ t.created_on }}
+    <br><b>{{ t.author.username }}:</b> {{ t.name }}
+</a>
+<br>
 <br>
 {% endfor %}
 
