@@ -41,9 +41,9 @@ def login():
             return redirect(url_for('topics'))
         else:
             form.password.errors.append('Неправильный логин или пароль')
-            return redirect(url_for('login'), form=form)
+            return render_template('login.html', form=form)
 
-    return render_template('login.html', title='Sign In', form=form)
+    return render_template('login.html', form=form)
 
 
 @app.route('/signup', methods=['GET', 'POST'])
