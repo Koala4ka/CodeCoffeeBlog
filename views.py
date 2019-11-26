@@ -21,9 +21,7 @@ def hello():
 @app.route('/topics')
 def topics():
     topics = Topic.query.order_by(desc(Topic.created_on)).all()
-    topics_titles = ["<a href='/topic/{}'>{} {}: {}</a>".format(t.id, t.created_on, t.author.username, t.name) for t in
-                     topics]
-    return '<br>'.join(topics_titles)
+    return render_template('topics.html', topics=topics)
 
 
 @app.route('/topic/<int:id>')
@@ -36,32 +34,38 @@ def topic(id):
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
-        return redirect(url_for('me'))
+        return redirect(url_for('topics'))
 
     form = LoginForm()
     if form.validate_on_submit():
-        user = User.query.filter_by(username=form.username.data).first()
-        if user is None or not user.check_password(form.password.data):
+        if not login_user_with_credentials(form.username.data, form.password.data):
             form.error = 'Invalid username or password'
             return render_template('login.html', title='Sign In', form=form)
-        login_user(user, remember=True)
-        return redirect(url_for('me'))
+        return redirect(url_for('topics'))
 
     return render_template('login.html', title='Sign In', form=form)
 
 
 @app.route('/signup')
 def signup():
-    return "sign up here"
-
-
-@app.route('/me')
-@login_required
-def me():
-    return current_user.username
+    return "Тут будет регистрация."
 
 
 @app.route("/logout")
 def logout():
     logout_user()
+    return redirect(url_for('topics'))
+
+
+def login_user_with_credentials(username, password):
+    user = User.query.filter_by(username=username).first()
+    if user is None or not user.check_password(password):
+        return False
+    login_user(user, remember=True)
+    return True
+
+
+@app.route('/test_login/<string:username>')
+def test_login(username):
+    login_user_with_credentials(username, '123')
     return redirect(url_for('topics'))
