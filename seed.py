@@ -41,16 +41,16 @@ def seed_topics():
     user3 = User.query.filter_by(username='elizaveta_ii').first()
     assert(user1 is not None and user2 is not None and user3 is not None)
 
-    topic1 = Topic(name='Пиво или Вино', author_id=user1.id, created_on=time_ago(1), updated_on=time_ago(1))
+    topic1 = Topic(name='Beer or wine', author_id=user1.id, created_on=time_ago(1), updated_on=time_ago(1))
     db.session.add(topic1)
 
-    topic2 = Topic(name='iOS или Android', author_id=user2.id, created_on=time_ago(2), updated_on=time_ago(2))
+    topic2 = Topic(name='iOS or Android', author_id=user2.id, created_on=time_ago(2), updated_on=time_ago(2))
     db.session.add(topic2)
 
-    topic3 = Topic(name='Мясо или Рыба', author_id=user3.id, created_on=time_ago(3), updated_on=time_ago(3))
+    topic3 = Topic(name='Meat or fish', author_id=user3.id, created_on=time_ago(3), updated_on=time_ago(3))
     db.session.add(topic3)
 
-    topic4 = Topic(name='Курица или Яйцо', author_id=user1.id, created_on=time_ago(4), updated_on=time_ago(4))
+    topic4 = Topic(name='Hen or egg', author_id=user1.id, created_on=time_ago(4), updated_on=time_ago(4))
     db.session.add(topic4)
 
     db.session.commit()
