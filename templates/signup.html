@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="static/styles.css">
 
-<h1>Логин</h1>
+<h1>Регистрация</h1>
 
 <form action="" method="post" novalidate>
     {{ form.hidden_tag() }}
@@ -18,13 +18,14 @@
         <span style="color: red;">{{ error }}</span>
         {% endfor %}
     </p>
-    {% if form.error != '' -%}
-    <p style="color: red;">{{ form.error }}</p>
-    {%- endif %}
+    <p>
+        {{ form.password2.label }}<br>
+        {{ form.password2(size=32) }}<br>
+        {% for error in form.password2.errors %}
+        <span style="color: red;">{{ error }}</span>
+        {% endfor %}
+    </p>
     <p>{{ form.submit() }}</p>
 </form>
-<p>Нет аккаунта? <a href="{{ url_for('signup') }}">Регистрация</a></p>
 
-<br><a href="{{ url_for('facility_login', username='obama') }}">Войти как Обама</a>
-<br><a href="{{ url_for('facility_login', username='merkel') }}">Войти как Меркель</a>
-<br><a href="{{ url_for('facility_login', username='elizaveta_ii') }}">Войти как Елизавета ||</a>
+<p>Есть аккаунт? <a href="{{ url_for('login') }}">Вход</a></p>

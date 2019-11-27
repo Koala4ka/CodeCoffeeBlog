@@ -1,0 +1,21 @@
+<link rel="stylesheet" href="static/styles.css">
+
+{% for t in topics %}
+<a href='/topic/{{t.id}}'>
+    {{ t.created_on }}
+    <br><b>{{ t.author.username }}:</b> {{ t.name }}
+</a>
+<br>
+<br>
+{% endfor %}
+
+<br>
+<br>
+
+{% if current_user.is_authenticated -%}
+Юзер: {{ current_user.username }}
+<br><a href="{{ url_for('logout') }}">Выйти</a>
+{% else %}
+Юзер: гость
+<br><a href="{{ url_for('login') }}">Войти</a>
+{%- endif %}
