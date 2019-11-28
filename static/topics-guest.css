@@ -1,0 +1,197 @@
+@import url(//db.onlinewebfonts.com/c/878812403fc38d24102f0458bf6e4744?family=Lucida+Grande);
+@font-face {
+    font-family: "Lucida Grande";
+    src: url("//db.onlinewebfonts.com/t/878812403fc38d24102f0458bf6e4744.eot");
+    src: url("//db.onlinewebfonts.com/t/878812403fc38d24102f0458bf6e4744.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/878812403fc38d24102f0458bf6e4744.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/878812403fc38d24102f0458bf6e4744.woff") format("woff"), url("//db.onlinewebfonts.com/t/878812403fc38d24102f0458bf6e4744.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/878812403fc38d24102f0458bf6e4744.svg#Lucida Grande") format("svg");
+}
+
+body {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: #FFFFFF;
+    font-family: 'Lucida Grande';
+}
+
+header {
+    position: absolute;
+    top: 50px;
+    right: 128px;
+    bottom: 938px;
+    left: 128px;
+    font-family: 'Lucida Grande';
+}
+
+main {
+    position: absolute;
+    top: 180px;
+    right: 128px;
+    bottom: 628px;
+    left: 128px;
+    font-family: 'Lucida Grande';
+}
+
+.coffee-project {
+    position: absolute;
+    top: 9px;
+    right: 637px;
+    bottom: 9px;
+    left: 0px;
+    font-family: 'Lucida Grande';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 19px;
+    /* identical to box height */
+    letter-spacing: 0.88125px;
+    color: #000000;
+}
+
+.account {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 720px;
+    font-family: 'Lucida Grande';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 17px;
+    text-align: right;
+    letter-spacing: 0.88125px;
+    color: #000000;
+}
+
+#sign-in {
+    font-size: 15px;
+    color: green;
+    border: none;
+    background: none;
+    font-family: 'Lucida Grande';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 17px;
+    text-align: right;
+    letter-spacing: 0.88125px;
+    color: #58BD00;
+}
+
+a {
+    text-decoration: none;
+}
+
+main {
+    position: absolute;
+    top: 180px;
+    right: 128px;
+    bottom: 641px;
+    left: 128px;
+    font-family: 'Lucida Grande';
+}
+
+.theme-block-main {
+    position: absolute;
+    top: 50px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    font-family: 'Lucida Grande';
+}
+
+.theme-block-main-1 {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 180px;
+    left: 0px;
+    font-family: 'Lucida Grande';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 19px;
+    /* identical to box height */
+    letter-spacing: 0.88125px;
+    color: #000000;
+}
+
+.message {
+    position: absolute;
+    top: 21px;
+    right: 174px;
+    bottom: 1px;
+    left: 0px;
+    font-family: 'Lucida Grande';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 14px;
+    letter-spacing: 0.705px;
+    color: #000000;
+}
+
+.theme-block-main-2 {
+    position: absolute;
+    top: 60px;
+    right: 0px;
+    bottom: 120px;
+    left: 0px;
+    font-family: 'Lucida Grande';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 19px;
+    /* identical to box height */
+    letter-spacing: 0.88125px;
+    color: #000000;
+}
+
+.theme-block-main-3 {
+    position: absolute;
+    top: 120px;
+    right: 0px;
+    bottom: 60px;
+    left: 0px;
+    font-family: 'Lucida Grande';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 19px;
+    /* identical to box height */
+    letter-spacing: 0.88125px;
+    color: #000000;
+}
+
+.theme-block-main-4 {
+    position: absolute;
+    top: 180px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    font-family: 'Lucida Grande';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 19px;
+    /* identical to box height */
+    letter-spacing: 0.88125px;
+    color: #000000;
+}
+
+.date-block {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 720px;
+    font-family: 'Lucida Grande';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 14px;
+    text-align: right;
+    letter-spacing: 0.705px;
+    color: #000000;
+    text-align: right;
+}

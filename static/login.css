@@ -1,0 +1,60 @@
+@import url(//db.onlinewebfonts.com/c/878812403fc38d24102f0458bf6e4744?family=Lucida+Grande);
+@font-face {
+    font-family: "Lucida Grande";
+    src: url("//db.onlinewebfonts.com/t/878812403fc38d24102f0458bf6e4744.eot");
+    src: url("//db.onlinewebfonts.com/t/878812403fc38d24102f0458bf6e4744.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/878812403fc38d24102f0458bf6e4744.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/878812403fc38d24102f0458bf6e4744.woff") format("woff"), url("//db.onlinewebfonts.com/t/878812403fc38d24102f0458bf6e4744.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/878812403fc38d24102f0458bf6e4744.svg#Lucida Grande") format("svg");
+}
+
+body {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #F2F2F2;
+    font-family: 'Lucida Grande';
+}
+
+header {
+    position: absolute;
+    top: 50px;
+    right: 765px;
+    bottom: 956px;
+    left: 128px;
+    font-family: 'Lucida Grande';
+}
+
+main {
+    position: absolute;
+    top: 373px;
+    right: 390px;
+    bottom: 494px;
+    left: 494px;
+    width: 244px;
+    height: 157px;
+    font-family: 'Lucida Grande';
+}
+
+.sign-in {
+    position: absolute;
+    top: 139px;
+    right: 96px;
+    bottom: 0px;
+    left: 96px;
+    font-family: 'Lucida Grande';
+}
+
+footer {
+    position: relative;
+    top: 956px;
+    right: 368px;
+    bottom: 50px;
+    left: 369px;
+    width: 287px;
+    height: 18px;
+    font-family: 'Lucida Grande';
+}
+
+.sign-up {
+    border: none;
+    color: green;
+    font-family: 'Lucida Grande';
+}
