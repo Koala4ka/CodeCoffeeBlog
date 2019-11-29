@@ -9,16 +9,16 @@
   font-family: 'Lucida Grande';
     color: rgb(12, 0, 3);
     font-size: 40px;
+    font-weight:bold
 
    }
-
-
- h3 {
+    h3 {
     font-family: 'Lucida Grande';
       color: rgb(12, 0, 3);
       font-size: 15px;
-    }
+      font-weight:regular
 
+    }
 
 a, a:visited, a:hover, a:active {
   color: inherit;
